@@ -1,10 +1,8 @@
-# E-Commerce Funnel Analysis
+# E-Commerce Sales Funnel Analysis: Identifying Revenue Bottlenecks Using SQL
 
 ## Overview
 
-I analyzed e-commerce data from January 11 - February 10, 2026 using SQL on Google BigQuery. I wanted to understand where customers drop off in the sales funnel and which marketing channels work best.
-
-During this period, 3,282 people visited the site. 541 of them made a purchase, which is a 16.5% conversion rate. The average order was $107.80.
+An online retailer wanted to understand why only a small percentage of visitors became customers. The goal of this analysis was to identify where users dropped off in the purchasing funnel, evaluate marketing channel performance, and recommend actions that could increase revenue.
 
 ## What I Found
 

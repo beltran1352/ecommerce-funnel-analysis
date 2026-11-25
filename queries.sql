@@ -1,3 +1,6 @@
+-- All queries use a half-open timestamp window: Jan 11 through the end of Feb 10, 2026.
+-- Rerun against BigQuery before using updated results in the README.
+
 -- Query 1: Define sales funnel stages
 With funnel_stages AS (
   SELECT
@@ -9,7 +12,7 @@ With funnel_stages AS (
 
   FROM `stellar-cipher-476303-v7.sql_practice.users_events`
   WHERE event_date >= TIMESTAMP('2026-01-11') 
-  AND event_date <= TIMESTAMP('2026-02-10')
+  AND event_date < TIMESTAMP('2026-02-11')
 )
 
 SELECT * FROM funnel_stages;
@@ -26,7 +29,7 @@ With funnel_stages AS (
 
   FROM `stellar-cipher-476303-v7.sql_practice.users_events`
   WHERE event_date >= TIMESTAMP('2026-01-11') 
-  AND event_date <= TIMESTAMP('2026-02-10')
+  AND event_date < TIMESTAMP('2026-02-11')
 )
 
 SELECT 
@@ -54,7 +57,7 @@ with source_funnel as (
 
   FROM `stellar-cipher-476303-v7.sql_practice.users_events`
   WHERE event_date >= TIMESTAMP('2026-01-11') 
-  AND event_date <= TIMESTAMP('2026-02-10')
+  AND event_date < TIMESTAMP('2026-02-11')
   group by traffic_source 
 )
 select
@@ -80,7 +83,7 @@ with user_journey as (
 
   FROM `stellar-cipher-476303-v7.sql_practice.users_events`
   WHERE event_date >= TIMESTAMP('2026-01-11') 
-  AND event_date <= TIMESTAMP('2026-02-10')
+  AND event_date < TIMESTAMP('2026-02-11')
   group by user_id
   having min(case when event_type = 'purchase' then event_date END) is not null
 )
@@ -103,7 +106,7 @@ with funnel_revenue as (
 
   FROM `stellar-cipher-476303-v7.sql_practice.users_events`
   WHERE event_date >= TIMESTAMP('2026-01-11') 
-  AND event_date <= TIMESTAMP('2026-02-10')
+  AND event_date < TIMESTAMP('2026-02-11')
 )
 
 SELECT
